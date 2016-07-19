@@ -2,15 +2,12 @@ FROM debian:latest
 MAINTAINER Curtis Baldwinson <curtisbaldwinson@gmail.com>
 
 # Apache2
-RUN apt-get update && apt-get -y install apache2 wget && apt-get clean
+RUN apt-get clean && apt-get update && apt-get -y install apache2 wget
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
 ENV APACHE_LOG_DIR /var/log/apache2
 
-# # PHP5, APC, some useful stuff etc...
-# RUN apt-get -y install git php5-dev libpcre3-dev gcc make php5-mysql libapache2-mod-php5 curl php5-curl php-apc
-
-RUN apt-get update && apt-get upgrade -y
+RUN apt-get clean && apt-get update && apt-get upgrade -y
 RUN apt-get install -y apache2 python-software-properties
 
 # PHP 7
